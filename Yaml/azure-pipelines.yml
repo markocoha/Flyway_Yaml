@@ -22,7 +22,7 @@ stages:
     flywayJDBC: '-url=jdbc:sqlserver://$(databaseHost);databaseName=$(databaseName)' #If user/pass credentials are provided, ensure ;integratedSecurity is removed from the flyway script
     flywayLocations: '-locations=filesystem:$(Build.SourcesDirectory)\*\migrations' #This may need to be updated to match your environment, depending on the structure of your GIT repo
     flywayAdditionalParams: '-placeholders.environment=Build' #This is useful when providing advanced parameters to Flyway, for example which environment we're currently running against
-    flywaySecurityParams: 'encrypt=true;trustservercertificate=true'
+    flywaySecurityParams: 'encrypt=true;encrypt=true'
     FLYWAY_CLEAN_DISABLED: false
     compareSnapshotParams: '/server1:$(databaseHost) /database1:$(databaseName) /userName1:coha /password1:MarkoMarko1234 /makeSnapshot:"$(buildDirectory)\$(artifactName)\Snapshots\$(artifactName)_Snapshot.snp"' #This will likely need updating to match your preferred connection details. Documentation Can be found  - https://documentation.red-gate.com/sc/using-the-command-line/switches-used-in-the-command-line
     enableFlywayBuild: 'true'
@@ -90,7 +90,7 @@ stages:
     databasePassword: 'MarkoMarko1234' #Optional - If intergratedSecurity is not used, a Password can be provided. This is often better used in conjunction with ADO secret variables.
     reportsFolder: '$(releaseDirectory)\$(System.StageDisplayName)\Reports'
     flywayJDBC: '-url=jdbc:sqlserver://$(databaseHost);databaseName=$(databaseName)' #If user/pass credentials are provided, ensure ;integratedSecurity is removed from the flyway script
-    flywaySecurityParams: 'trustservercertificate=true;integratedSecurity=true'
+    flywaySecurityParams: 'encrypt=true;integratedSecurity=true'
     flywayMigrationsFolder: '$(buildDirectory)\$(artifactName)\migrations'
     flywayLocations: '-locations=filesystem:"$(flywayMigrationsFolder)"' #This may need to be updated to match your environment, depending on the structure of your GIT rep
     flywayDryRunScriptName: '$(databaseName)_$(releaseName)_DryRun_Script.sql'
@@ -206,7 +206,7 @@ stages:
     databasePassword: '' #Optional - If intergratedSecurity is not used, a Password can be provided. This is often better used in conjunction with ADO secret variables.
     reportsFolder: '$(releaseDirectory)\$(System.StageDisplayName)\Reports'
     flywayJDBC: '-url=jdbc:sqlserver://$(databaseHost);databaseName=$(databaseName)' #If user/pass credentials are provided, ensure ;integratedSecurity is removed from the flyway script
-    flywaySecurityParams: 'trustservercertificate=true;integratedSecurity=true'
+    flywaySecurityParams: 'encrypt=true;integratedSecurity=true'
     flywayMigrationsFolder: '$(buildDirectory)\$(artifactName)\migrations'
     flywayLocations: '-locations=filesystem:"$(buildDirectory)\$(artifactName)\migrations"' #This may need to be updated to match your environment, depending on the structure of your GIT rep
     flywayDryRunScriptName: '$(databaseName)_$(releaseName)_DryRun_Script.sql'
