@@ -14,7 +14,7 @@ stages:
 
   variables:
     databaseName: $(databasePrefix)_$(System.StageDisplayName) #Database could be explicitly provided if required
-    databaseHost: 'mconitor.swedencentral.cloupadpp.azure.com' # Host address for the Build Database
+    databaseHost: 'mconitor.swedencentral.cloudapp.azure.com' # Host address for the Build Database
     databaseInstance: '' # Optional - Check your JDBC connection to see if required
     databasePort: '1433' #This is redundant if also providing an instance 
     databaseUsername: 'coha' #Optional - If intergratedSecurity is not used, a Username can be provided. This is often better used in conjunction with ADO secret variables.
