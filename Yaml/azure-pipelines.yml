@@ -53,7 +53,7 @@ stages:
       - script: |
           echo 'Check Status of Last migration against $(databaseName)'
           flyway info $(flywayJDBC);$(flywaySecurityParams) -user="$(databaseUsername)" -password="$(databasePassword)" $(flywayLocations) $(flywayAdditionalParams)
-        workingDirectory: #Add working directory location if required
+        #workingDirectory: #Add working directory location if required
         failOnStderr: true
         condition: eq(variables['enableFlywayBuild'], 'true')
         displayName: 'Flyway Info - Against $(databaseName)'
