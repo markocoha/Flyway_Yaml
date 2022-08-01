@@ -7,7 +7,7 @@ variables:
     artifactName: '$(databasePrefix)_Database_Build-$(Build.BuildNumber)' #Change as required
     directoryCompare: 'F:\Program Files (x86)\Red Gate\SQL Compare 14' #If this is added to PATH, it can be removed as an environment variable
     directoryCodeGuard: 'F:\Code Analysis' #If this is added to PATH, it can be removed as an environment variable
-    #FLYWAY_LICENSE_KEY: '' #Enter your Flyway Teams license here. For added security, this could also be passed in as a secure environment variable if required.
+    FLYWAY_LICENSE_KEY: 'FL01467586AA712419F618E004BE95B9783A0D341498B313DE1DE9E92D2B41D593A7AFECC093737563F2D1A00904D4D4E77BE35791D2578365C8AD9C642D8E9D49323224629DA18519D65CB0194651EF19C3CA31A0858C84AD791CFD373BEF9BF6A0A8584CCADDC9E013E49BD58756303AE23A1A4D9AAE5B97627170A4BF30A8768AA03DEF33A386E4C2B7C62D66F3DB3C024E99DED20B9E7A3BB132D43F48A60464001ABC7F01E4A81AC7CDFA7F44734E673CDA8FE3864ED4089BD913C8A91265C93FF289386B3A9B5A87BC2D58D9CAE9BBC7C56F50EABB3897D2CD4F260CE42CB85B90571FBBF0E3847C515FA758BA759D320D05D312384C318E42C73177D24BBA' #Enter your Flyway Teams license here. For added security, this could also be passed in as a secure environment variable if required.
 stages:
 - stage: Build
   pool: Default
@@ -22,7 +22,7 @@ stages:
     flywayJDBC: '-url=jdbc:sqlserver://$(databaseHost);databaseName=$(databaseName)' #If user/pass credentials are provided, ensure ;integratedSecurity is removed from the flyway script
     flywayLocations: '-locations=filesystem:$(Build.SourcesDirectory)\*\migrations' #This may need to be updated to match your environment, depending on the structure of your GIT repo
     flywayAdditionalParams: '-placeholders.environment=Build' #This is useful when providing advanced parameters to Flyway, for example which environment we're currently running against
-    flywaySecurityParams: 'encrypt=true;trustservercertificate=true;integratedSecurity=true'
+    flywaySecurityParams: 'encrypt=true;trustservercertificate=true'
     FLYWAY_CLEAN_DISABLED: false
     compareSnapshotParams: '/server1:$(databaseHost)\$(databaseInstance) /database1:$(databaseName) /makeSnapshot:"$(buildDirectory)\$(artifactName)\Snapshots\$(artifactName)_Snapshot.snp"' #This will likely need updating to match your preferred connection details. Documentation Can be found  - https://documentation.red-gate.com/sc/using-the-command-line/switches-used-in-the-command-line
     enableFlywayBuild: 'true'
