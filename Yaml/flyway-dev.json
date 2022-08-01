@@ -9,6 +9,20 @@
   "deployment": {
     "flywayConfFiles": [
       "./flyway.conf"
+    ],
+    "targetDatabases": [
+      {
+        "connectionProvider": {
+          "url": "jdbc:sqlserver://mconitor.swedencentral.cloudapp.azure.com;encrypt=true;databaseName=Widget_Yaml_Build;trustServerCertificate=true",
+          "username": "coha",
+          "password": {
+            "name": "Flyway Desktop bcb5e9c1-ed5a-4826-8889-c46ccc2cb198",
+            "secretType": "DefaultSecretStore"
+          },
+          "type": "UsernamePassword"
+        },
+        "schemas": []
+      }
     ]
   }
 }

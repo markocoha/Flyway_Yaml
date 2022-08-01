@@ -22,7 +22,7 @@ stages:
     flywayJDBC: '-url=jdbc:sqlserver://$(databaseHost);databaseName=$(databaseName)' #If user/pass credentials are provided, ensure ;integratedSecurity is removed from the flyway script
     flywayLocations: '-locations=filesystem:$(Build.SourcesDirectory)\*\migrations' #This may need to be updated to match your environment, depending on the structure of your GIT repo
     flywayAdditionalParams: '-placeholders.environment=Build' #This is useful when providing advanced parameters to Flyway, for example which environment we're currently running against
-    flywaySecurityParams: 'trustservercertificate=true;integratedSecurity=true'
+    flywaySecurityParams: 'encrypt=true;trustservercertificate=true;integratedSecurity=true'
     FLYWAY_CLEAN_DISABLED: false
     compareSnapshotParams: '/server1:$(databaseHost)\$(databaseInstance) /database1:$(databaseName) /makeSnapshot:"$(buildDirectory)\$(artifactName)\Snapshots\$(artifactName)_Snapshot.snp"' #This will likely need updating to match your preferred connection details. Documentation Can be found  - https://documentation.red-gate.com/sc/using-the-command-line/switches-used-in-the-command-line
     enableFlywayBuild: 'true'
