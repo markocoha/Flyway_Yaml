@@ -1,7 +1,6 @@
 variables:
     databasePrefix: 'Widget_Yaml'
     buildDirectory: 'C:\Deployments\Deployment Resources\Widget_Yaml\Build\Build-$(Build.BuildNumber)' #This is an example Build path, where the build files will be written to, change as required
-    releaseDirectory: 'F:\DevOps_Resources\Deployment Resources\Widget_Yaml\Release\Build-$(Build.BuildNumber)'
     releaseDirectory: 'C:\Deployments\Deployment Resources\Widget_Yaml\Release\Build-$(Build.BuildNumber)'
     releaseName: $(Build.BuildNumber) #This is used in the release process to ensure unique foldering
     releaseEnvironment: $(System.StageDisplayName) #This captures the current stage name for use in the Release scripts
