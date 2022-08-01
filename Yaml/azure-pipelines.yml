@@ -10,7 +10,7 @@ variables:
     #FLYWAY_LICENSE_KEY: '' #Enter your Flyway Teams license here. For added security, this could also be passed in as a secure environment variable if required.
 stages:
 - stage: Build
-  pool: Anderson_LocalAgent
+  pool: Default
 
   variables:
     databaseName: $(databasePrefix)_$(System.StageDisplayName) #Database could be explicitly provided if required
@@ -79,7 +79,7 @@ stages:
           Parallel: true
 
 - stage: Staging
-  pool: Anderson_LocalAgent
+  pool: Default
   condition: succeeded('Build') #This is optional, but can help ensure the pipeline runs as required
   variables:
     databaseName: $(databasePrefix)_$(System.StageDisplayName) #Database could be explicitly provided if required
@@ -195,7 +195,7 @@ stages:
         exampleVariable: 'Value' #If additional script level variables are required, add them here
 
 - stage: Prod
-  pool: Anderson_LocalAgent
+  pool: Default
   condition: succeeded('Staging') #This is optional, but can help ensure the pipeline runs as required
   variables:
     databaseName: $(databasePrefix)_$(System.StageDisplayName) #Database could be explicitly provided if required
