@@ -1,5 +1,5 @@
 variables:
-    databasePrefix: 'Widget'
+    databasePrefix: 'Widget_Yaml'
     buildDirectory: 'F:\DevOps_Resources\Deployment Resources\Widget\Build\Build-$(Build.BuildNumber)' #This is an example Build path, where the build files will be written to, change as required
     releaseDirectory: 'F:\DevOps_Resources\Deployment Resources\Widget\Release\Build-$(Build.BuildNumber)'
     releaseName: $(Build.BuildNumber) #This is used in the release process to ensure unique foldering
@@ -14,11 +14,11 @@ stages:
 
   variables:
     databaseName: $(databasePrefix)_$(System.StageDisplayName) #Database could be explicitly provided if required
-    databaseHost: 'DaLab' # Host address for the Build Database
+    databaseHost: 'mconitor.swedencentral.cloupadpp.azure.com' # Host address for the Build Database
     databaseInstance: '' # Optional - Check your JDBC connection to see if required
     databasePort: '1433' #This is redundant if also providing an instance 
-    databaseUsername: 'redgate' #Optional - If intergratedSecurity is not used, a Username can be provided. This is often better used in conjunction with ADO secret variables.
-    databasePassword: 'Redg@te1' #Optional - If intergratedSecurity is not used, a Password can be provided. This is often better used in conjunction with ADO secret variables.
+    databaseUsername: 'coha' #Optional - If intergratedSecurity is not used, a Username can be provided. This is often better used in conjunction with ADO secret variables.
+    databasePassword: 'MarkoMarko1234' #Optional - If intergratedSecurity is not used, a Password can be provided. This is often better used in conjunction with ADO secret variables.
     flywayJDBC: '-url=jdbc:sqlserver://$(databaseHost);databaseName=$(databaseName)' #If user/pass credentials are provided, ensure ;integratedSecurity is removed from the flyway script
     flywayLocations: '-locations=filesystem:$(Build.SourcesDirectory)\*\migrations' #This may need to be updated to match your environment, depending on the structure of your GIT repo
     flywayAdditionalParams: '-placeholders.environment=Build' #This is useful when providing advanced parameters to Flyway, for example which environment we're currently running against
