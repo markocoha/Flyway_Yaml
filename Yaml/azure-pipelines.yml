@@ -88,11 +88,12 @@ stages:
     databasePort: '1433' #This is redundant if also providing an instance 
     databaseUsername: 'coha' #Optional - If intergratedSecurity is not used, a Username can be provided. This is often better used in conjunction with ADO secret variables.
     databasePassword: 'MarkoMarko1234' #Optional - If intergratedSecurity is not used, a Password can be provided. This is often better used in conjunction with ADO secret variables.
-    reportsFolder: '$(releaseDirectory)\$(System.StageDisplayName)\Reports'
+    #reportsFolder: '$(releaseDirectory)\$(System.StageDisplayName)\Reports'
+    reportsFolder: '$(releaseDirectory)\Reports'
     flywayJDBC: '-url=jdbc:sqlserver://$(databaseHost);databaseName=$(databaseName)' #If user/pass credentials are provided, ensure ;integratedSecurity is removed from the flyway script
     flywaySecurityParams: 'encrypt=true;trustservercertificate=true'
-    #flywayMigrationsFolder: '$(buildDirectory)\$(artifactName)\migrations'
-    flywayMigrationsFolder: '-locations=filesystem:$(Build.SourcesDirectory)\*\migrations'
+    flywayMigrationsFolder: '$(buildDirectory)\$(artifactName)\migrations'
+    #flywayMigrationsFolder: '-locations=filesystem:$(Build.SourcesDirectory)\*\migrations'
     flywayLocations: '-locations=filesystem:"$(flywayMigrationsFolder)"' #This may need to be updated to match your environment, depending on the structure of your GIT rep
     flywayDryRunScriptName: '$(databaseName)_$(releaseName)_DryRun_Script.sql'
     flywayDryRun: '-dryRunOutput="$(reportsFolder)\$(flywayDryRunScriptName)"'
