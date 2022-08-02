@@ -169,7 +169,7 @@ stages:
           echo *** 'Run SQL Compare to Create Comparison Report' ***
           echo *** 'Snapshot used - $(buildDirectory)\$(artifactName)\Snapshots\$(artifactName)_Snapshot.snp' ***
           echo *** SQL Compare cmd: sqlcompare $(compareReportParams)
-
+          echo *** Repors folder : $(releaseDirectory)
           cd $(directoryCompare)  
           sqlcompare $(compareReportParams)
   
