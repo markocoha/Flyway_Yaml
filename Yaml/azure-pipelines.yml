@@ -151,7 +151,7 @@ stages:
           echo *** Changing Directory to - $(directoryCodeGuard) ***
           echo *** sqlCodeGuardParams: $(sqlCodeGuardParams) ***
         #  cd\
-          echo **** $(directoryCodeGuard)
+        #  echo **** $(directoryCodeGuard)
         #  cd $(directoryCodeGuard)
           echo 'Running SQL Code Guard'
          # SqlCodeGuard.cmd.exe $(sqlCodeGuardParams)
