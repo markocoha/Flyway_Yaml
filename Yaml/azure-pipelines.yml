@@ -216,8 +216,8 @@ stages:
     flywayDryRun: '-dryRunOutput="$(reportsFolder)\$(flywayDryRunScriptName)"'
     flywayAdditionalParams: '-baselineOnMigrate=true -placeholders.environment=Prod' #This is useful when providing advanced parameters to Flyway, for example which environment we're currently running against
     FLYWAY_CLEAN_DISABLED: true
-    compareSchemaParams: '/Server1:$(databaseHost)\$(databaseInstance) /Database1:$(databaseName) /Makescripts:"$(releaseDirectory)\$(System.StageDisplayName)\Schema Backup\"' #This will likely need updating to match your preferred connection details. Documentation Can be found  - https://documentation.red-gate.com/sc/using-the-command-line/switches-used-in-the-command-line
-    compareReportParams: '/Server2:$(databaseHost)\$(databaseInstance) /Database2:$(databaseName) /Snapshot1:"$(buildDirectory)\$(artifactName)\Snapshots\$(artifactName)_Snapshot.snp" /report:"$(reportsFolder)\$(databaseName)_Comparison_Report_$(releaseName).html" /force /exclude:table:flyway* /exclude:table:__SchemaSnapshot /include:Identical /Options:IgnoreWithNocheck /reportType:html'
+    compareSchemaParams: '/Server1:$(databaseHost) /Database1:$(databaseName) /userName1:coha /password1:MarkoMarko1234 /Makescripts:"$(releaseDirectory)\$(System.StageDisplayName)\Schema Backup\"' #This will likely need updating to match your preferred connection details. Documentation Can be found  - https://documentation.red-gate.com/sc/using-the-command-line/switches-used-in-the-command-line
+    compareReportParams: '/Server2:$(databaseHost) /Database2:$(databaseName) /userName2:coha /password2:MarkoMarko1234 /Snapshot1:"$(buildDirectory)\$(artifactName)\Snapshots\$(artifactName)_Snapshot.snp" /report:"$(reportsFolder)\$(databaseName)_Comparison_Report_$(releaseName).html" /force /exclude:table:flyway* /exclude:table:__SchemaSnapshot /include:Identical /Options:IgnoreWithNocheck /reportType:html'
     sqlCodeGuardParams: '/source:"$(reportsFolder)\$(flywayDryRunScriptName)"  /out:"$(reportsFolder)\$(databaseName)_$(releaseName)_CodeAnalysis.html" /exclude:SC006 /warning:ALL'
     enableSchemaBackup: 'true'
     enableFlywayDryRun: 'true'
