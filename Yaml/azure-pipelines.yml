@@ -253,7 +253,7 @@ stages:
           echo *** Create Dryrun Script for the $(datbaseName) Database ***
           echo *** Build directory in use $(flywayMigrationsFolder) ***
  
-         flyway migrate info $(flywayJDBC);$(flywaySecurityParams) -user="$(databaseUsername)" -password="$(databasePassword)" $(flywayLocations) $(flywayDryRun) $(flywayAdditionalParams)
+          flyway migrate info $(flywayJDBC);$(flywaySecurityParams) -user="$(databaseUsername)" -password="$(databasePassword)" $(flywayLocations) $(flywayDryRun) $(flywayAdditionalParams)
  
       workingDirectory: #Add working directory location if required
       displayName: 'Create Deployment Report for Database: $(databaseName)'
