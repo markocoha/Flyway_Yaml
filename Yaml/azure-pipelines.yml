@@ -151,9 +151,9 @@ stages:
           echo *** Changing Directory to - $(directoryCodeGuard) ***
           echo *** sqlCodeGuardParams: $(sqlCodeGuardParams) ***
           cd\
-          cd $(directoryCodeGuard)
+         echo **** cd $(directoryCodeGuard)
           echo 'Running SQL Code Guard'
-          SqlCodeGuard.cmd.exe $(sqlCodeGuardParams)
+         echo ****  SqlCodeGuard.cmd.exe $(sqlCodeGuardParams)
   
       workingDirectory: #Add working directory location if required
       displayName: 'Create Code Analysis Report for Database: $(databaseName)'
