@@ -93,7 +93,7 @@ stages:
     flywayJDBC: '-url=jdbc:sqlserver://$(databaseHost);databaseName=$(databaseName)' #If user/pass credentials are provided, ensure ;integratedSecurity is removed from the flyway script
     flywaySecurityParams: 'encrypt=true;trustservercertificate=true'
     flywayMigrationsFolder: '$(buildDirectory)'
-    #flywayMigrationsFolder: '-locations=filesystem:$(Build.SourcesDirectory)\*\migrations'
+    flywayMigrationsFolder: '-locations=filesystem:$(Build.SourcesDirectory)\*\migrations'
     flywayLocations: '-locations=filesystem:"$(flywayMigrationsFolder)"' #This may need to be updated to match your environment, depending on the structure of your GIT rep
     flywayDryRunScriptName: '$(databaseName)_$(releaseName)_DryRun_Script.sql'
     flywayDryRun: '-dryRunOutput="$(reportsFolder)\$(flywayDryRunScriptName)"'
