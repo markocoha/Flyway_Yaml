@@ -43,7 +43,7 @@ stages:
       
       - script: |
           echo 'Building Latest Repo against $(databaseName)'
-          flyway migrate $(flywayJDBC);$(flywaySecurityParams) -user="$(databaseUsername)" -password="$(databasePassword)" $(flywayLocations) $(flywayAdditionalParams)
+          flyway migrate info  $(flywayJDBC);$(flywaySecurityParams) -user="$(databaseUsername)" -password="$(databasePassword)" $(flywayLocations) $(flywayAdditionalParams)
         workingDirectory: #Add working directory location if required
         failOnStderr: true
         condition: eq(variables['enableFlywayBuild'], 'true')
